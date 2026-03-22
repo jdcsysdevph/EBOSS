@@ -1,0 +1,784 @@
+/*BODY STYLES (DON'T OVERWRITE)*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url(../images/background.png) no-repeat center center/cover;
+    background-size: cover;
+    margin: 0;
+    min-height: 100vh; /* FIX: was min-width which broke mobile layout */
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../images/background.png") no-repeat center center/cover;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+.main-container{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem; /* FIX: added base padding so content never touches screen edge */
+}
+
+/* LOGO SECTION */
+.logo-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    margin-bottom: 4rem;
+}
+
+.logo-item{
+    width: 180px;
+    height: 80px;
+    transition: 0.3s ease;
+}
+
+.logo-item img{
+    width: 100%;      /* FIX: was 150% causing overflow */
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow();
+}
+
+.logo-item:hover{
+    transform: scale(1.05);
+}
+
+.logo-item i{
+    font-size: 2.5rem;
+    color: #8b0000;
+}
+
+
+/*HEADER AND TITLE SECTION*/
+.header-main{
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.header-title{
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.header-subtitle{
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 1rem auto;
+}
+
+.header-divider{
+    height: 4px;
+    width: 90%;          /* FIX: was hardcoded 1000px — broken on any small screen */
+    max-width: 1000px;
+    background: white;
+    border-radius: 2px;
+    margin: 1rem auto;
+}
+
+
+/*CONNECTION AND SOCIALS SECTION*/
+.connection-banner{
+    position: relative;
+    background: linear-gradient(135deg, #000000 0%, #8b0000 50%, #000000 100%);
+    border-color: black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.connection-banner::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/header.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.connection-left{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
+.connection-photo{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.connection-photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.connection-text h2{
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.connection-text p{
+    font-size: 1rem;
+    color: white;
+}
+
+.connection-buttons{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-btn{
+    background: rgb(255, 255, 255);
+    color: #000000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.social-btn:hover{
+    color: rgb(255, 255, 255);
+    background: #790a0a;
+}
+
+.social-btn i{
+    font-size: 1.2rem;
+}
+
+
+/*SERVICES SECTION (THE MAIN CONTENT OF THE PAGE DON'T OVERWRITE)*/
+.services-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.service-card{
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease; /* FIX: was missing the 's' unit */
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+}
+
+.service-card:hover{
+    transform: scale(1.01);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.service-card.ebars{
+    background: linear-gradient(135deg, #000000 0%, #105200 50%, #000000 100%);
+}
+
+.service-card.ebims{
+    background: linear-gradient(135deg, #000000 0%, #00186e 50%, #000000 100%);
+}
+
+.service-card.ebyms{
+    background: linear-gradient(135deg, #000000 0%, #30006a 50%, #000000 100%);
+}
+
+.service-card.ebicts{
+    background: linear-gradient(135deg, #000000 0%, #745100 50%, #000000 100%);
+}
+
+.service-header{
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.card-info{
+    flex: 1;
+}
+
+.card-title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.75rem;
+}
+
+.card-subtitle{
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.5;
+}
+
+.service-icon{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.service-icon img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.card-buttons{
+    padding: 0 2rem 2rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+/*BUTTON STYLES FOR LINK SERVICES*/
+.service-button.btn-primary{
+    background: linear-gradient(135deg, #0fa800, #0c9400);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 15px rgba(12, 148, 0, 0.3);
+    width: fit-content;
+    padding: 12px 32px;
+    flex: none;
+    min-width: auto;
+    border-radius: 50px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.service-button.btn-primary:hover{
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(135deg, #0c9400, #0a7d00);
+    box-shadow: 0 6px 20px rgba(12, 148, 0, 0.5);
+}
+
+.service-button.btn-primary:active{
+    transform: translateY(-1px) scale(1.02);
+}
+
+.service-button.btn-primary:focus{
+    outline: none;
+}
+
+
+/*RESPONSIVE STYLES DON'T OVERWRITE*/
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
+    .main-container{
+        padding: 0 2rem;
+    }
+
+    .header-title{
+        font-size: 3rem;
+    }
+
+    .connection-banner{
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .connection-left{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .connection-buttons{
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    .services-grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .logo-container{
+        gap: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .header-title{
+        font-size: 2.5rem;
+    }
+
+    .header-subtitle{
+        font-size: 0.95rem;
+    }
+
+    .connection-text h2{
+        font-size: 1.5rem;
+    }
+
+    .service-card{
+        min-height: auto;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px){
+    .main-container{
+        padding: 0 1rem;
+    }
+
+    .logo-container{
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .logo-item{
+        width: 140px;
+        height: 60px;
+    }
+
+    .logo-item img{
+        height: 100px;
+    }
+
+    .header-title{
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .header-subtitle{
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+
+    .header-divider{
+        width: 95%;
+        height: 3px;
+    }
+
+    .connection-banner{
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .connection-left{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .connection-buttons{
+        justify-content: center;
+        width: 100%;
+    }
+
+    .connection-photo{
+        width: 100px;
+        height: 100px;
+    }
+
+    .connection-text h2{
+        font-size: 1.3rem;
+    }
+
+    .connection-text p{
+        font-size: 0.9rem;
+    }
+
+    .social-btn{
+        padding: 0.65rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .service-header{
+        padding: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .service-icon{
+        width: 70px;
+        height: 70px;
+    }
+
+    .service-icon img{
+        width: 70px;
+        height: 70px;
+    }
+
+    .card-title{
+        font-size: 1.3rem;
+    }
+
+    .card-subtitle{
+        font-size: 0.9rem;
+    }
+
+    .card-buttons{
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-button{
+        width: fit-content;
+        min-width: auto;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px){
+    .main-container{
+        padding: 0 0.75rem;
+    }
+
+    .logo-container{
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo-item{
+        width: 110px;
+        height: 50px;
+    }
+
+    .logo-item img{
+        height: 80px;
+    }
+
+    .header-title{
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .header-subtitle{
+        font-size: 0.85rem;
+    }
+
+    .header-divider{
+        width: 100%;
+        height: 3px;
+    }
+
+    .connection-banner{
+        padding: 1.25rem;
+        border-radius: 1rem;
+    }
+
+    .connection-photo{
+        width: 80px;
+        height: 80px;
+    }
+
+    .connection-text h2{
+        font-size: 1.1rem;
+    }
+
+    .connection-text p{
+        font-size: 0.85rem;
+    }
+
+    .connection-buttons{
+        flex-direction: column;
+        align-items: center; /* FIX: center buttons instead of stretching them */
+    }
+
+    .social-btn{
+        width: auto; /* ensure buttons only take up as much space as needed */
+        min-width: 200px; /* optional: keeps them a consistent minimum width */
+    }
+
+    .social-btn{
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        justify-content: center;
+    }
+
+    .services-grid{
+        gap: 1rem;
+    }
+
+    .service-card{
+        border-radius: 1rem;
+    }
+
+    .service-header{
+        padding: 1.25rem;
+    }
+
+    .service-icon{
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-icon img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-icon i{
+        font-size: 2.5rem !important;
+    }
+
+    .card-title{
+        font-size: 1.15rem;
+    }
+
+    .card-subtitle{
+        font-size: 0.85rem;
+    }
+
+    .card-buttons{
+        padding: 0 1.25rem 1.25rem 1.25rem;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .service-button{
+        width: fit-content;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px){
+    .main-container{
+        padding: 0 0.5rem;
+    }
+
+    .logo-item{
+        width: 90px;
+        height: 40px;
+    }
+
+    .logo-item img{
+        height: 65px;
+    }
+
+    .header-title{
+        font-size: 1.3rem;
+    }
+
+    .header-subtitle{
+        font-size: 0.8rem;
+    }
+
+    .connection-text h2{
+        font-size: 1rem;
+    }
+
+    .card-title{
+        font-size: 1rem;
+    }
+
+    .card-subtitle{
+        font-size: 0.8rem;
+    }
+
+    .service-button.btn-primary{
+        font-size: 0.8rem;
+        padding: 10px 20px;
+    }
+}
+
+
+/* FOOTER SECTION */
+.footer-container {
+    padding: 3rem 2rem;
+    margin: 3rem auto 2rem auto;
+    max-width: 1400px;
+    text-align: center;
+}
+
+.footer-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    transition: transform 0.3s ease;
+}
+
+.footer-item:hover {
+    transform: translateY(-5px);
+}
+
+.footer-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.footer-divider {
+    height: 2px;
+    width: 80%;
+    background: rgb(255, 237, 237);
+    margin: 0 auto 2rem auto;
+    border-radius: 2px;
+}
+
+.footer-text {
+    color: white;
+    padding: 0 2rem;
+}
+
+.footer-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.footer-text .copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 1.5rem;
+    font-weight: 300;
+}
+
+/* Responsive Styles for Footer */
+@media (max-width: 900px) {
+    .footer-logos {
+        gap: 2rem;
+    }
+
+    .footer-item img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-logos {
+        gap: 1.5rem;
+    }
+
+    .footer-item img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .footer-text {
+        padding: 0 1rem;
+    }
+
+    .footer-text p {
+        font-size: 0.95rem;
+    }
+
+    .footer-text .copyright {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 1.5rem 1rem;
+        border-radius: 1rem;
+    }
+
+    .footer-logos {
+        gap: 1rem;
+    }
+
+    .footer-item img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .footer-divider {
+        width: 90%;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-text {
+        padding: 0 0.5rem;
+    }
+
+    .footer-text p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .footer-text .copyright {
+        font-size: 0.8rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .footer-item img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .footer-text p {
+        font-size: 0.8rem;
+    }
+}
